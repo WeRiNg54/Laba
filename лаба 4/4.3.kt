@@ -1,4 +1,4 @@
-class Enclosure(var name : String, var amount : String, var male : String, var female : String, var sound : String){
+class Volier(var name : String, var amount : String, var male : String, var female : String, var sound : String){
     fun Info(){
         var res = "Вольер с $name. В нем обитает $amount животных. Среди них $male мужских особей и $female женских.Они $sound";
         println(res)
@@ -6,40 +6,40 @@ class Enclosure(var name : String, var amount : String, var male : String, var f
 }
 
 class Menu(){
-    var enclosures = mutableListOf<Enclosure>();
+    var voliers = mutableListOf<Volier>()
 
     fun check(){
         println("Введите название вольера, к которому хотите подойти: ")
-        for (i in enclosures){
+        for (i in voliers){
             println(i.name)
         }
-        var ch = readLine().toString();
-        for (i in enclosures){
+        var ch = readLine().toString()
+        for (i in voliers){
             if(i.name == ch){
-                i.Info();
+                i.Info()
             }
         }
     }
 
-    fun add(enclosure : Enclosure){
-        enclosures.add(enclosure);
+    fun add(volier : Volier){
+        voliers.add(volier)
     }
 }
 
 
 
 fun main() {
-    var enc1 = Enclosure("львы", "4", "1", "3", "рычат")
-    var enc2 = Enclosure("волки", "6","4","2", "воют")
-    var enc3 = Enclosure("обезьяны", "7", "3", "4", "кричат")
-    var enc4 = Enclosure("питоны", "3","3","0", "шипят")
+    var vol1 = Volier("львы", "4", "1", "3", "рычат")
+    var vol2 = Volier("волки", "6","4","2", "воют")
+    var vol3 = Volier("обезьяны", "7", "3", "4", "кричат")
+    var vol4 = Volier("питоны", "3","3","0", "шипят")
 
-    var menu = Menu();
+    var vols = Menu();
 
-    menu.add(enc1)
-    menu.add(enc2)
-    menu.add(enc3)
-    menu.add(enc4)
+    vols.add(vol1)
+    vols.add(vol2)
+    vols.add(vol3)
+    vols.add(vol4)
 
-    menu.check();
+    vols.check()
 }
