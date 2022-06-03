@@ -3,53 +3,59 @@ class Product(var name : String){
 }
 
 class Salesman(){
-    var products = mutableListOf<Product>()
+    var prs = mutableListOf<Product>()
 
     fun ProductList(){
         println("Товары продавца: ")
-        for (i in products){
+        for (i in prs){
             println(i.name)
         }
     }
 
-    fun add(product : Product){
-        products.add(product)
-    }
-
     fun buy(name : String, buyer : Buyer){
-        for (i in products){
+        for (i in prs){
             if (i.name == name){
                 buyer.add(i)
-                products.removeAt(products.indexOf(i))
+                prs.removeAt(prs.indexOf(i))
             }
         }
+    }
+
+    fun add(pr: Product) {
+        prs.add(pr)
     }
 }
 
 class Buyer(){
-    var products = mutableListOf<Product>();
+    var prs = mutableListOf<Product>();
 
     fun ProductList(){
         println("Покупки: ")
-        for (i in products){
+        for (i in prs){
             println(i.name)
         }
     }
 
-    fun add(product : Product){
-        products.add(product)
+    fun add(pr : Product){
+        prs.add(pr)
     }
 }
 
 fun main() {
 
-    var pr1 = Product("Сыр")
-    var pr2 = Product("Хлеб")
     var sale = Salesman()
     var buyer = Buyer()
-
-    sale.add(pr1)
-    sale.add(pr2)
+    while(true) {
+        print("Введите продукт (для того чтобы закончить введите Стоп): ")
+        var pr = readLine()!!
+        if (pr == "Стоп") {
+            break
+        }
+        else {
+            var prs = Product(pr)
+            sale.add(prs)
+        }
+    }
 
     sale.ProductList()
 
